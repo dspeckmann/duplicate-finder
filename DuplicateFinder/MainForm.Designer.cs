@@ -51,6 +51,7 @@
             this.sizeLabel = new System.Windows.Forms.Label();
             this.fileNameLabel = new System.Windows.Forms.Label();
             this.deleteButton = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             this.mainMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.duplicatePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listSplitContainer)).BeginInit();
@@ -131,11 +132,11 @@
             this.duplicatePictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.duplicatePictureBox.BackColor = System.Drawing.SystemColors.Window;
-            this.duplicatePictureBox.Location = new System.Drawing.Point(0, 60);
+            this.duplicatePictureBox.BackColor = System.Drawing.Color.Transparent;
+            this.duplicatePictureBox.Location = new System.Drawing.Point(0, 79);
             this.duplicatePictureBox.Margin = new System.Windows.Forms.Padding(12);
             this.duplicatePictureBox.Name = "duplicatePictureBox";
-            this.duplicatePictureBox.Size = new System.Drawing.Size(660, 645);
+            this.duplicatePictureBox.Size = new System.Drawing.Size(660, 626);
             this.duplicatePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.duplicatePictureBox.TabIndex = 2;
             this.duplicatePictureBox.TabStop = false;
@@ -213,6 +214,8 @@
             // 
             // pictureSplitContainer.Panel2
             // 
+            this.pictureSplitContainer.Panel2.BackColor = System.Drawing.SystemColors.Window;
+            this.pictureSplitContainer.Panel2.Controls.Add(this.label5);
             this.pictureSplitContainer.Panel2.Controls.Add(this.deleteButton);
             this.pictureSplitContainer.Panel2.Controls.Add(this.fileNameLabel);
             this.pictureSplitContainer.Panel2.Controls.Add(this.sizeLabel);
@@ -231,7 +234,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 41);
+            this.label4.Location = new System.Drawing.Point(132, 44);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(73, 13);
             this.label4.TabIndex = 6;
@@ -240,7 +243,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 29);
+            this.label3.Location = new System.Drawing.Point(132, 32);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(47, 13);
             this.label3.TabIndex = 5;
@@ -249,7 +252,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 16);
+            this.label2.Location = new System.Drawing.Point(132, 19);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(30, 13);
             this.label2.TabIndex = 4;
@@ -258,7 +261,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 3);
+            this.label1.Location = new System.Drawing.Point(132, 6);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 13);
             this.label1.TabIndex = 3;
@@ -267,7 +270,7 @@
             // lastModifiedLabel
             // 
             this.lastModifiedLabel.AutoSize = true;
-            this.lastModifiedLabel.Location = new System.Drawing.Point(76, 42);
+            this.lastModifiedLabel.Location = new System.Drawing.Point(205, 45);
             this.lastModifiedLabel.Name = "lastModifiedLabel";
             this.lastModifiedLabel.Size = new System.Drawing.Size(0, 13);
             this.lastModifiedLabel.TabIndex = 7;
@@ -275,7 +278,7 @@
             // createdLabel
             // 
             this.createdLabel.AutoSize = true;
-            this.createdLabel.Location = new System.Drawing.Point(76, 29);
+            this.createdLabel.Location = new System.Drawing.Point(205, 32);
             this.createdLabel.Name = "createdLabel";
             this.createdLabel.Size = new System.Drawing.Size(0, 13);
             this.createdLabel.TabIndex = 8;
@@ -283,7 +286,7 @@
             // sizeLabel
             // 
             this.sizeLabel.AutoSize = true;
-            this.sizeLabel.Location = new System.Drawing.Point(76, 16);
+            this.sizeLabel.Location = new System.Drawing.Point(205, 19);
             this.sizeLabel.Name = "sizeLabel";
             this.sizeLabel.Size = new System.Drawing.Size(0, 13);
             this.sizeLabel.TabIndex = 9;
@@ -291,21 +294,29 @@
             // fileNameLabel
             // 
             this.fileNameLabel.AutoSize = true;
-            this.fileNameLabel.Location = new System.Drawing.Point(76, 3);
+            this.fileNameLabel.Location = new System.Drawing.Point(205, 6);
             this.fileNameLabel.Name = "fileNameLabel";
             this.fileNameLabel.Size = new System.Drawing.Size(0, 13);
             this.fileNameLabel.TabIndex = 10;
             // 
             // deleteButton
             // 
-            this.deleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.deleteButton.Location = new System.Drawing.Point(573, 31);
+            this.deleteButton.Location = new System.Drawing.Point(6, 6);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(75, 23);
+            this.deleteButton.Size = new System.Drawing.Size(120, 67);
             this.deleteButton.TabIndex = 11;
             this.deleteButton.Text = "Delete";
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(132, 57);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(48, 13);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Preview:";
             // 
             // MainForm
             // 
@@ -365,6 +376,7 @@
         private System.Windows.Forms.Label createdLabel;
         private System.Windows.Forms.Label lastModifiedLabel;
         private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.Label label5;
     }
 }
 

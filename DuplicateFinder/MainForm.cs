@@ -41,10 +41,6 @@ namespace DuplicateFinder
                 .Select(group => new DuplicateViewModel { FileName = group.Key, FilePaths = group });
         }
 
-        private void ExitToolStripMenuItem_Click(object sender, EventArgs e) => Close();
-
-        private void AboutToolStripMenuItem_Click(object sender, EventArgs e) => new AboutBox().ShowDialog();
-
         private void DuplicateListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             var selectedDuplicate = duplicateListBox.SelectedItem as DuplicateViewModel;
@@ -68,11 +64,6 @@ namespace DuplicateFinder
             }
         }
 
-        private void Log(string message)
-        {
-            logTextBox.AppendText(Environment.NewLine + message);
-        }
-
         private void DeleteButton_Click(object sender, EventArgs e)
         {
             var selectedFilePath = fileListBox.SelectedItem as string;
@@ -81,6 +72,15 @@ namespace DuplicateFinder
                 File.Delete(selectedFilePath);
                 Log($"Deleted file {selectedFilePath}.");
             }
+        }
+
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e) => Close();
+
+        private void AboutToolStripMenuItem_Click(object sender, EventArgs e) => new AboutBox().ShowDialog();
+
+        private void Log(string message)
+        {
+            logTextBox.AppendText(Environment.NewLine + message);
         }
     }
 }
