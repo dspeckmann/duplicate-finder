@@ -13,6 +13,9 @@ namespace DuplicateFinder
 {
     public partial class MainForm : Form
     {
+        private BindingList<DuplicateViewModel> allDuplicates;
+        private BindingList<string> currentPaths;
+
         public MainForm()
         {
             InitializeComponent();
@@ -25,10 +28,10 @@ namespace DuplicateFinder
                 Cursor.Current = Cursors.WaitCursor;
                 Log($"Looking for duplicates in {folderBrowserDialog.SelectedPath}...");
                 var filePaths = Directory.EnumerateFiles(folderBrowserDialog.SelectedPath, "*", SearchOption.AllDirectories);
-                var duplicates = GetDuplicates(filePaths);
-                duplicateListBox.DataSource = duplicates.OrderBy(duplicate => duplicate.FileName).ToList();
+                allDuplicates = new BindingList<DuplicateViewModel>(GetDuplicates(filePaths).OrderBy(duplicate => duplicate.FileName).ToList());
+                duplicateListBox.DataSource = allDuplicates;
                 duplicateListBox.DisplayMember = nameof(DuplicateViewModel.FileName);
-                Log($"Found {duplicates.Count()} duplicates in {folderBrowserDialog.SelectedPath}.");
+                Log($"Found {allDuplicates.Count()} duplicates in {folderBrowserDialog.SelectedPath}.");
                 Cursor.Current = Cursors.Default;
             }
         }
@@ -38,7 +41,7 @@ namespace DuplicateFinder
             return filePaths
                 .GroupBy(filePath => Path.GetFileName(filePath))
                 .Where(group => group.Count() > 1)
-                .Select(group => new DuplicateViewModel { FileName = group.Key, FilePaths = group });
+                .Select(group => new DuplicateViewModel { FileName = group.Key, FilePaths = new BindingList<string>(group.ToList()) });
         }
 
         private void DuplicateListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -46,7 +49,8 @@ namespace DuplicateFinder
             var selectedDuplicate = duplicateListBox.SelectedItem as DuplicateViewModel;
             if (selectedDuplicate != null)
             {
-                fileListBox.DataSource = selectedDuplicate.FilePaths.ToList();
+                currentPaths = selectedDuplicate.FilePaths;
+                fileListBox.DataSource = currentPaths;
             }
         }
 
@@ -72,6 +76,7 @@ namespace DuplicateFinder
                 File.Delete(selectedFilePath);
                 Log($"Deleted file {selectedFilePath}.");
             }
+            currentPaths.Remove(selectedFilePath);
         }
 
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e) => Close();
